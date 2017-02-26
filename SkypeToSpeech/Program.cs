@@ -1,65 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Data;
-using System.Data.Common;
 using System.Data.SQLite;
 using System.Threading;
 using Microsoft.Speech.Synthesis;
 
 
-namespace ConsoleApplication2
+namespace SkypeToSpeech
 {
 
     static class Program
     {
-        private class Message
+        private static void ReadMessage(this HashSet<SkypeMessage> messages, SpeechSynthesizer synth)
         {
-            public int id;
-            public string from;
-            public string message;
-            public DateTime timestamp;
-            public bool isRead;
-            public override int GetHashCode()
+            string previousSender = string.Empty;
+            foreach (var message in messages.Where(m => !m.IsRead).OrderBy(m => m.Timestamp))
             {
-                return (id.ToString() + from.ToString() + message.ToString()).GetHashCode();
-            }
-
-            public override bool Equals(object obj)
-            {
-                Message M = obj as Message;
-                return M.GetHashCode() == this.GetHashCode() ;
-            }
-        }
-
-
-        private static void ReadMessage(this HashSet<Message> messages, SpeechSynthesizer synth)
-        {
-            foreach (var message in messages.Where(m => !m.isRead).OrderBy(m => m.timestamp))
-            {
-                synth.Speak(message.message);
-                message.isRead = true;
+                if (previousSender != message.GetSender())
+                {
+                    synth.Speak(message.GetSender()+ " " + message.GetMessage());
+                    Console.WriteLine(message.GetSender() + message.GetMessage());
+                }
+                else
+                {
+                    synth.Speak(message.GetMessage());
+                    Console.WriteLine(message.GetMessage());
+                }
+                message.IsRead = true;
+                previousSender = message.GetSender();
             }
         }
         static void Main(string[] args)
         {
-            HashSet<Message> messages = new HashSet<Message>();
+            HashSet<SkypeMessage> messages = new HashSet<SkypeMessage>();
             SpeechSynthesizer synth = new SpeechSynthesizer();
+            synth.SetOutputToDefaultAudioDevice();
             var temp = synth.GetInstalledVoices();
             synth.SelectVoice("Microsoft Server Speech Text to Speech Voice (ru-RU, Elena)");
-            synth.SelectVoice(synth.GetInstalledVoices().Where(v => v.VoiceInfo.Culture == System.Globalization.CultureInfo.GetCultureInfo("ru-RU") ).First().ToString());
+            //synth.SelectVoice(synth.GetInstalledVoices().Where(v => v.VoiceInfo.Culture == System.Globalization.CultureInfo.GetCultureInfo("ru-RU") ).First().ToString());
 
             string dbPath = @"DataSource=C:\Users\Nixon\AppData\Roaming\Skype\ivan_gevchuk\main.db";
             var db = new SQLiteConnection(dbPath);
             SQLiteCommand cmd = new SQLiteCommand(
                 @"select 
-                  m.id, m.from_dispname, m.body_xml, datetime(m.timestamp, 'unixepoch')
+                  m.id, m.from_dispname, m.body_xml, datetime(m.timestamp, 'unixepoch') as messageDate
                   from messages m
                   where m.convo_id = 128300
-                  and m.timestamp > strftime('%s', 'now', '-6000 second')", db);
+                  and m.timestamp > strftime('%s', 'now', '-10000 second')", db);
             SQLiteDataReader reader = null;
             try
             {
@@ -73,12 +61,10 @@ namespace ConsoleApplication2
                         while (reader.Read())
                         {
                             // get the results of each column
-                            var message = new Message();
-                            message.id = reader.GetInt32(0);
-                            message.from = reader.GetString(1);
-                            message.message = reader.GetString(2);
-                            message.timestamp = reader.GetDateTime(3);
-                            message.isRead = false;
+                            var message = new SkypeMessage(id: reader.GetInt32(0),
+                                                           from: reader.GetString(1),
+                                                           message: reader.GetString(2),
+                                                           timestamp: reader.GetDateTime(3));
                             messages.Add(message);
                         }
                         reader.Close();

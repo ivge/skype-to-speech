@@ -1,0 +1,3 @@
+C:\Users\Nixon\Source\Repos\test-repo\SkypeToSpeech\bin\Debug\SkypeToSpeech.exe.config
+C:\Users\Nixon\Source\Repos\test-repo\SkypeToSpeech\obj\Debug\SkypeToSpeech.exe
+C:\Users\Nixon\Source\Repos\test-repo\SkypeToSpeech\obj\Debug\SkypeToSpeech.pdb

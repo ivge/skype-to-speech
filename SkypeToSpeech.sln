@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication2", "ConsoleApplication2\ConsoleApplication2.csproj", "{921B6EA2-3BC7-4278-931C-97299D27B9AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkypeToSpeech", "SkypeToSpeech\SkypeToSpeech.csproj", "{921B6EA2-3BC7-4278-931C-97299D27B9AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

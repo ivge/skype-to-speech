@@ -13,3 +13,18 @@ c:\Users\Nixon\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Console
 c:\Users\Nixon\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.exe
 c:\Users\Nixon\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.pdb
 C:\Users\Nixon\documents\visual studio 2015\Projects\ConsoleApplication2\ConsoleApplication2\bin\Debug\Microsoft.Speech.dll
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\EntityFramework.dll
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\Microsoft.Speech.dll
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\System.Data.SQLite.dll
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\EntityFramework.xml
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\System.Data.SQLite.xml
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\obj\Debug\ConsoleApplication2.csprojResolveAssemblyReference.cache
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\SkypeToSpeech.exe.config
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\SkypeToSpeech.exe
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\bin\Debug\SkypeToSpeech.pdb
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\obj\Debug\SkypeToSpeech.exe
+C:\Users\Nixon\Source\Repos\test-repo\ConsoleApplication2\obj\Debug\SkypeToSpeech.pdb
